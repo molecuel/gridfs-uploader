@@ -1,0 +1,39 @@
+{
+  "name": "gridfs-uploader",
+  "description": "Verifies file, checks hashes, stores it in gridfs and provides a special upload server",
+  "keywords": [
+    "gridfs",
+    "mongodb",
+    "mongoose"
+  ],
+  "author": {
+    "name": "Dominic Böttger",
+    "email": "dominic.boettger@inspirationlabs.com"
+  },
+  "repository": {
+    "url": ""
+  },
+  "contributors": [],
+  "dependencies": {
+    "async": ">=0.0.1",
+    "mime": ">=0.0.1",
+    "mime-magic": ">=0.0.1",
+    "mongodb": ">=0.0.1",
+    "gridfs-stream": ">=0.0.1",
+    "mmmagic": ">=0.0.1 "
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": ">= 0.0.1",
+    "supertest": ">=0.0.1",
+    "assert": ">=0.0.1",
+    "chai": ">=0.0.1"
+  },
+  "version": "0.0.3",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -R spec"
+  }
+}
