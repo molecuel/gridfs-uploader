@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/DominicBoettger/gridfs-uploader.svg?branch=master)](https://travis-ci.org/DominicBoettger/gridfs-uploader)
+
 # gridfs-uploader
 
 Easily add new files to mongos gridfs. Special feature is to check for uniqueness while uploading the file.
