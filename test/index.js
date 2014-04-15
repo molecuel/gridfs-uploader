@@ -12,6 +12,7 @@ var assert = require('assert'),
   testBin = __dirname + '/testfiles/binary.bin',
   outputPath =  __dirname + '/testfiles/output.txt',
   pdfFile = __dirname + '/testfiles/test.pdf',
+  pngFile = __dirname + '/testfiles/test.png',
   server,
   db;
 
@@ -150,7 +151,15 @@ describe('gfsuploader', function(){
 
     it('should index a PDF file', function(done) {
       g.putFile(pdfFile, 'test.pdf', null, function(err, result) {
-        id = result.fileId;
+        should.not.exist(err);
+        should.exist(result);
+        result.should.be.an.Object;
+        should.exist(result.metadata.text);
+        done();
+      })
+    });
+    it('should index a Image file', function(done) {
+      g.putFile(pngFile, 'test.png', null, function(err, result) {
         should.not.exist(err);
         should.exist(result);
         result.should.be.an.Object;
