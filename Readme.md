@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/DominicBoettger/gridfs-uploader.svg?branch=master)](https://travis-ci.org/DominicBoettger/gridfs-uploader)
 
+[![NPM](https://nodei.co/npm-dl/gridfs-uploader.png?months=1)](https://nodei.co/npm/gridfs-uploader/)
+
+[![NPM](https://nodei.co/npm/gridfs-uploader.png?downloads=true&stars=true)](https://nodei.co/npm/gridfs-uploader/)
+
 # gridfs-uploader + fulltext extraction
 
 Easily add new files to mongos gridfs. Special feature is to check for uniqueness while uploading the file.
@@ -67,6 +71,7 @@ model.findById(id, function(err, docs) {
 	console.log(docs);
 }
 ```
+
 ## Todo
 - Some tests are missing ( check for CSV for example )
 - Adding additional handler for file types.
