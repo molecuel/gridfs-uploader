@@ -3,6 +3,7 @@
  */
 var assert = require('assert'),
   mongo = require('mongodb'),
+  mongoose = require('mongoose'),
   Grid = require('../'),
   should = require('should'),
   crypto = require('crypto'),
@@ -109,14 +110,38 @@ describe('gfsuploader', function(){
           done();
         });
       });
-    })
+    });
+
+  });
+
+  describe('MongooseRead', function() {
+    var mongoose, model;
+
+    before(function(){
+      var mongoose = require('mongoose');
+      mongoose.connect('mongodb://localhost/gridloader_test');
+      var schema = new mongoose.Schema({
+        filename: String
+      },{safe: false, collection: 'fs.files'});
+      model = mongoose.model('files', schema);
+    });
+
+    it('should return data via mongoose', function(done) {
+      model.findById(id, function(err, docs) {
+        should.not.exist(err);
+        docs.should.be.an.Object;
+        done();
+      });
+    });
   });
 
   after(function (done) {
+    fs.unlinkSync(testBin);
+    fs.unlinkSync(outputPath);
+    done();
     db.dropDatabase(function () {
       db.close(true, done);
     });
-    fs.unlinkSync(testBin);
-    fs.unlinkSync(outputPath);
+
   });
 });
