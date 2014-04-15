@@ -138,7 +138,6 @@ describe('gfsuploader', function(){
   after(function (done) {
     fs.unlinkSync(testBin);
     fs.unlinkSync(outputPath);
-    done();
     db.dropDatabase(function () {
       db.close(true, done);
     });
