@@ -161,7 +161,7 @@ describe('gfsuploader', function(){
     });
     it('should index a Image file', function(done) {
       // indexing a png takes usually longer
-      this.timeout(5000);
+      this.timeout(50000);
       g.putFile(pngFile, 'test.png', null, function(err, result) {
         should.not.exist(err);
         should.exist(result);
@@ -174,7 +174,7 @@ describe('gfsuploader', function(){
     it('should index a german Image file', function(done) {
       // indexing a png takes usually longer
       // lacks current support of textract library for defining multiple language versions
-      this.timeout(20000);
+      this.timeout(50000);
       g.putFile(pngFileDe, 'test_de.png', null, function(err, result) {
         should.not.exist(err);
         should.exist(result);
