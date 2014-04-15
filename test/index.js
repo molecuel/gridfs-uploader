@@ -11,6 +11,7 @@ var assert = require('assert'),
   txtReadPath = __dirname + '/testfiles/1.txt',
   testBin = __dirname + '/testfiles/binary.bin',
   outputPath =  __dirname + '/testfiles/output.txt',
+  pdfFile = __dirname + '/testfiles/test.pdf',
   server,
   db;
 
@@ -135,12 +136,35 @@ describe('gfsuploader', function(){
     });
   });
 
+  describe('Textract', function() {
+    var g;
+
+    before(function(){
+      g =new Grid(mongo);
+      g.db = db;
+    });
+
+    it('should be a object', function () {
+      assert('object' == typeof g);
+    });
+
+    it('should index a PDF file', function(done) {
+      g.putFile(pdfFile, 'test.pdf', null, function(err, result) {
+        id = result.fileId;
+        should.not.exist(err);
+        should.exist(result);
+        result.should.be.an.Object;
+        should.exist(result.metadata.text);
+        done();
+      })
+    });
+  });
+
   after(function (done) {
     fs.unlinkSync(testBin);
     fs.unlinkSync(outputPath);
     db.dropDatabase(function () {
       db.close(true, done);
     });
-
   });
 });
