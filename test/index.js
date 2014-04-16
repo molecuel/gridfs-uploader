@@ -13,6 +13,7 @@ var assert = require('assert'),
   outputPath =  __dirname + '/testfiles/output.txt',
   pdfFile = __dirname + '/testfiles/test.pdf',
   pngFile = __dirname + '/testfiles/test.png',
+  jpgFile = __dirname + '/testfiles/test.jpg',
   pngFileDe = __dirname + '/testfiles/test_de.png',
   server,
   db;
@@ -159,6 +160,7 @@ describe('gfsuploader', function(){
         done();
       })
     });
+
     it('should index a Image file', function(done) {
       // indexing a png takes usually longer
       this.timeout(50000);
@@ -180,6 +182,19 @@ describe('gfsuploader', function(){
         should.exist(result);
         result.should.be.an.Object;
         should.exist(result.metadata.text);
+        done();
+      })
+    });
+
+    it('should put a jpeg with exif-data', function(done) {
+      // indexing a png takes usually longer
+      // lacks current support of textract library for defining multiple language versions
+      g.putFile(jpgFile, 'test.jpg', null, function(err, result) {
+        should.not.exist(err);
+        should.exist(result);
+        result.should.be.an.Object;
+        should.exist(result.metadata.image);
+        should.exist(result.metadata.exif);
         done();
       })
     });
