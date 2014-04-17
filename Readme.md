@@ -4,6 +4,8 @@
 
 [![NPM](https://nodei.co/npm/gridfs-uploader.png?downloads=true&stars=true)](https://nodei.co/npm/gridfs-uploader/)
 
+[![NPM version](https://badge.fury.io/js/gridfs-uploader@2x.png)](http://badge.fury.io/js/gridfs-uploader)
+
 # gridfs-uploader + fulltext extraction
 
 Easily add new files to mongos gridfs. Special feature is to check for uniqueness while uploading the file.
@@ -57,6 +59,29 @@ To use this feature you should install the needed system libraries.
 Install libraries under ubuntu
 > apt-get install catdoc poppler-utils tesseract-ocr unzip
 
+
+## Exif extraction for JPEG - files
+
+Starting with version 0.6.0 every uploaded jpeg will be scanned for exif - data.
+
+For example a result in the metadata of the files object can be
+
+```js
+{ filename: 'test.jpg',
+  content_type: 'image/jpeg',
+  text: ' ',
+  image:
+   { Make: 'NIKON CORPORATION',
+     Model: 'NIKON D3000',
+     XResolution: 300,
+     YResolution: 300,
+     ResolutionUnit: 2,
+     Software: 'Ver.1.00 ',
+     ModifyDate: '2013:10:17 15:42:37',
+     ExifOffset: 198,
+     GPSInfo: 776 },
+  ...
+```
 
 ## Read data with mongoose
 
