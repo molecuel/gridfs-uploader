@@ -118,6 +118,7 @@ describe('gfsuploader', function(){
 
   });
 
+
   describe('MongooseRead', function() {
     var mongoose, model;
 
@@ -134,6 +135,23 @@ describe('gfsuploader', function(){
       model.findById(id, function(err, docs) {
         should.not.exist(err);
         docs.should.be.an.Object;
+        done();
+      });
+    });
+  });
+
+  describe('GridDelete', function() {
+    var g;
+
+    before(function(){
+      g =new Grid(mongo);
+      g.db = db;
+    });
+
+    it('should return true when deleted successfully', function(done) {
+      g.deleteFile(id, null, function(err, status) {
+        should.not.exist(err);
+        status.should.be.ok;
         done();
       });
     });
@@ -199,6 +217,8 @@ describe('gfsuploader', function(){
       })
     });
   });
+
+
 
   after(function (done) {
     fs.unlinkSync(testBin);
