@@ -102,20 +102,26 @@ describe('gfsuploader', function(){
 
     it('should return same data', function(done) {
       var output = fs.createWriteStream(outputPath, {'flags': 'w'});
-      var filestream = g.getFileStream(id);
-      filestream.pipe(output);
-      filestream.on('error', function (err) {
-        throw err;
-      });
-      filestream.on('end', function (file) {
-        var original = fs.readFileSync(testBin);
-        fs.readFile(outputPath, function(err, file) {
-          assert.equal(original.toString('base64'), file.toString('base64'));
+      g.getFileStream(id, function(err, filestream) {
+        if(filestream) {
+          filestream.pipe(output);
+          filestream.on('error', function (err) {
+            throw err;
+            done();
+          });
+          filestream.on('end', function (file) {
+            var original = fs.readFileSync(testBin);
+            fs.readFile(outputPath, function(err, file) {
+              assert.equal(original.toString('base64'), file.toString('base64'));
+              done();
+            });
+          });
+        } else {
+          throw err;
           done();
-        });
-      });
+        }
+      })
     });
-
   });
 
 
