@@ -6,6 +6,9 @@
 
 [![NPM version](https://badge.fury.io/js/gridfs-uploader@2x.png)](http://badge.fury.io/js/gridfs-uploader)
 
+
+CAUTION!!!! getFileStream syntax change to be able to check the existence of the file before!!!!
+
 # gridfs-uploader + fulltext extraction
 
 Easily add new files to mongos gridfs. Special feature is to check for uniqueness while uploading the file.
@@ -29,9 +32,9 @@ g.putUniqueFile('/mypath/test.txt', 'text.txt', null, function(err, result) {
 
 // read Stream from gridfs (provided by gridfs-stream)
 var output = fs.createWriteStream(outputPath, {'flags': 'w'});
-var filestream = g.getFileStream(id);
-filestream.pipe(output);
-
+g.getFileStream(id, function(err, filestream) {
+  filestream.pipe(output);
+}
 ```
 
 ## Text extraction of files
