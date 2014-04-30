@@ -53,7 +53,7 @@ describe('gfsuploader', function(){
 
     it('should put a unique file', function(done) {
       g.putUniqueFile(txtReadPath, 'text.txt', null, function(err, result) {
-        txtId = result.fileId;
+        txtId = result._id;
         should.not.exist(err);
         should.exist(result);
         result.should.be.an.Object;
@@ -71,7 +71,7 @@ describe('gfsuploader', function(){
 
     it('should put a huge  file', function(done) {
       g.putFile(testBin, 'test.bin', null, function(err, result) {
-        id = result.fileId;
+        id = result._id;
         should.not.exist(err);
         should.exist(result);
         result.should.be.an.Object;
@@ -109,7 +109,7 @@ describe('gfsuploader', function(){
       });
       filestream.on('end', function (file) {
         var original = fs.readFileSync(testBin);
-        var newfile = fs.readFile(outputPath, function(err, file) {
+        fs.readFile(outputPath, function(err, file) {
           assert.equal(original.toString('base64'), file.toString('base64'));
           done();
         });
