@@ -15,7 +15,7 @@
   },
   "contributors": [],
   "dependencies": {
-    "async": ">=0.0.1",
+    "async": ">=2.3.0",
     "mime": ">=0.0.1",
     "mime-magic": ">=0.0.1",
     "mongodb": ">=0.0.1",
