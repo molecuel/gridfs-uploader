@@ -26,7 +26,7 @@
     "underscore": ">=0.0.1"
   },
   "devDependencies": {
-    "mocha": "*",
+    "mocha": ">=3.4.2",
     "should": ">= 0.0.1",
     "supertest": ">=0.0.1",
     "assert": ">=0.0.1",
