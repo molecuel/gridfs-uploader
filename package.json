@@ -31,7 +31,7 @@
     "supertest": ">=0.0.1",
     "assert": ">=0.0.1",
     "chai": ">=0.0.1",
-    "mongoose": ">0.0.1"
+    "mongoose": ">=4.11.3"
   },
   "version": "0.11.1",
   "engines": {
