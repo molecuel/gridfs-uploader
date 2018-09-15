@@ -18,7 +18,7 @@
     "async": ">=0.0.1",
     "mime": ">=0.0.1",
     "mime-magic": ">=0.0.1",
-    "mongodb": ">=0.0.1",
+    "mongodb": ">=3.1.6",
     "gridfs-stream": ">=0.0.1",
     "mmmagic": ">=0.0.1 ",
     "textract": ">=0.0.1",
