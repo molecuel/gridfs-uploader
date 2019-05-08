@@ -29,7 +29,7 @@
     "mocha": "*",
     "should": ">= 0.0.1",
     "supertest": ">=0.0.1",
-    "assert": ">=0.0.1",
+    "assert": ">=1.5.0",
     "chai": ">=0.0.1",
     "mongoose": ">0.0.1"
   },
