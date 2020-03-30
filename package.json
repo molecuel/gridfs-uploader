@@ -23,7 +23,7 @@
     "mmmagic": ">=0.0.1 ",
     "textract": ">=0.0.1",
     "exif": ">=0.0.1",
-    "underscore": ">=0.0.1"
+    "underscore": ">=1.10.2"
   },
   "devDependencies": {
     "mocha": "*",
